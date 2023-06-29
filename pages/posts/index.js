@@ -10,7 +10,9 @@ const Posts = ({ posts }) => {
       {posts.map((post) => (
         <Card key={post.id} className="shadow mb-3">
           <Card.Body>
-            <Card.Title> {post.title} </Card.Title>
+            <Card.Title>
+              {post.id}-- {post.title}{" "}
+            </Card.Title>
             <Card.Text> {post.body} </Card.Text>
             <Link href={`/posts/${post.id}`} passHref>
               <Card.Link>See more</Card.Link>
@@ -26,7 +28,7 @@ const Posts = ({ posts }) => {
 // lay du lieu tinh (truoc khi request user dung den)
 // giong nhau cho moi loai user
 export const getStaticProps = async () => {
-  const posts = await getPosts();
+  const posts = await getPosts(10);
   return {
     props: {
       posts,
